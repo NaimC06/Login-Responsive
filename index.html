@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- IMPORTANTE PARA RESPONSIVE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AdminExpress - Login</title>
+
+    <style>
+
+        /* =========================================
+           CONFIGURACIÓN GENERAL
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+        }
+
+
+        /* =========================================
+           CONTENEDOR PRINCIPAL
+        ========================================= */
+
+        .container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+
+        /* =========================================
+           LADO IZQUIERDO
+        ========================================= */
+
+        .left-side {
+            width: 50%;
+            background-color: #0865e8;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left-side h1 {
+            color: white;
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+
+        /* =========================================
+           LADO DERECHO
+        ========================================= */
+
+        .right-side {
+            width: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: #ffffff;
+        }
+
+
+        /* =========================================
+           CAJA DEL LOGIN
+        ========================================= */
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 40px;
+        }
+
+
+        /* =========================================
+           TÍTULO
+        ========================================= */
+
+        .login-container h2 {
+            font-size: 28px;
+            color: #252746;
+            margin-bottom: 12px;
+        }
+
+        .login-container h2 span {
+            font-weight: bold;
+        }
+
+
+        /* =========================================
+           TEXTO SECUNDARIO
+        ========================================= */
+
+        .subtitle {
+            color: #989898;
+            font-size: 13px;
+            line-height: 20px;
+            margin-bottom: 35px;
+        }
+
+
+        /* =========================================
+           FORMULARIO
+        ========================================= */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+
+            color: #303044;
+            font-size: 12px;
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================================
+           INPUT
+        ========================================= */
+
+        .input-container {
+            position: relative;
+        }
+
+        .input-container input {
+            width: 100%;
+
+            padding: 14px 15px 14px 42px;
+
+            border: 1px solid #eeeeee;
+            border-radius: 6px;
+
+            background-color: #fafafa;
+
+            font-size: 13px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        .input-container input:focus {
+            border-color: #0865e8;
+            background-color: white;
+        }
+
+
+        /* =========================================
+           ICONOS
+        ========================================= */
+
+        .input-icon {
+            position: absolute;
+
+            left: 14px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #6d7080;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           OLVIDASTE CONTRASEÑA
+        ========================================= */
+
+        .forgot-password {
+            display: block;
+
+            text-align: right;
+
+            color: #0865e8;
+
+            font-size: 11px;
+
+            text-decoration: none;
+
+            margin-top: 8px;
+            margin-bottom: 28px;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================================
+           BOTÓN
+        ========================================= */
+
+        .login-button {
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+            border-radius: 6px;
+
+            background-color: #0865e8;
+
+            color: white;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #0055c7;
+        }
+
+
+        /* =========================================
+           REGISTRO
+        ========================================= */
+
+        .signup {
+            margin-top: 28px;
+
+            text-align: center;
+
+            font-size: 11px;
+
+            color: #999999;
+        }
+
+        .signup a {
+            color: #0865e8;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+           TABLET Y CELULAR
+        ========================================= */
+
+        @media (max-width: 768px) {
+
+            /* DESAPARECE COMPLETAMENTE EL LADO AZUL */
+
+            .left-side {
+                display: none;
+            }
+
+
+            /* LOGIN OCUPA TODA LA PANTALLA */
+
+            .right-side {
+                width: 100%;
+                min-height: 100vh;
+            }
+
+
+            .login-container {
+                max-width: 450px;
+                padding: 35px;
+            }
+
+        }
+
+
+        /* =========================================
+           CELULARES PEQUEÑOS
+        ========================================= */
+
+        @media (max-width: 480px) {
+
+            .login-container {
+                padding: 25px;
+            }
+
+
+            .login-container h2 {
+                font-size: 24px;
+            }
+
+
+            .subtitle {
+                font-size: 12px;
+            }
+
+
+            .input-container input {
+                padding: 14px 15px 14px 40px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         CONTENEDOR PRINCIPAL
+    ========================================== -->
+
+    <div class="container">
+
+
+        <!-- =====================================
+             LADO IZQUIERDO AZUL
+        ====================================== -->
+
+        <div class="left-side">
+
+            <h1>AdminExpress</h1>
+
+        </div>
+
+
+
+        <!-- =====================================
+             LADO DERECHO LOGIN
+        ====================================== -->
+
+        <div class="right-side">
+
+
+            <div class="login-container">
+
+
+                <!-- TÍTULO -->
+
+                <h2>
+                    Let's <span>Sign In</span> 👇
+                </h2>
+
+
+                <!-- DESCRIPCIÓN -->
+
+                <p class="subtitle">
+                    Hey, Enter your details to get sign in<br>
+                    to your account.
+                </p>
+
+
+
+                <!-- FORMULARIO -->
+
+                <form>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label>Email</label>
+
+                        <div class="input-container">
+
+                            <span class="input-icon">
+                                ✉
+                            </span>
+
+                            <input
+                                type="email"
+                                placeholder="Enter Email"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label>Password</label>
+
+                        <div class="input-container">
+
+                            <span class="input-icon">
+                                🔒
+                            </span>
+
+                            <input
+                                type="password"
+                                placeholder="Enter Password"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FORGOT PASSWORD -->
+
+                    <a href="#" class="forgot-password">
+                        Forgot password?
+                    </a>
+
+
+
+                    <!-- BOTÓN -->
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                    >
+                        Sign In
+                    </button>
+
+
+
+                    <!-- REGISTRO -->
+
+                    <p class="signup">
+
+                        Don't have an account?
+
+                        <a href="#">
+                            Sign Up
+                        </a>
+
+                    </p>
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>
